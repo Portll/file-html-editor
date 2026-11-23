@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "File HTML Editor",
+  "version": "0.1.0",
+  "description": "Edit and save local files opened from file:// URLs.",
+  "minimum_chrome_version": "111",
+  "permissions": ["scripting"],
+  "host_permissions": ["file:///*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "Toggle editor (Alt+Shift+E)" },
+  "content_scripts": [
+    {
+      "matches": ["file:///*"],
+      "js": ["editor.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
